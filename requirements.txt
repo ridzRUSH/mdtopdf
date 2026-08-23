@@ -1,0 +1,24 @@
+# markmap_to_pdf.py -- Python dependencies
+#
+# The default pipeline (Markdown -> Markmap -> complete SVG -> vector PDF) is
+# handled by headless Chromium through Node.js, so nothing below is needed for
+# a plain `python markmap_to_pdf.py input.md`.  These packages power the
+# fallback pipelines and the optional page-fitting work.
+
+# --- raster fallback (--scale / --engine raster) --------------------------
+Pillow>=10.0.0          # reads the high-resolution PNG
+img2pdf>=0.5.0          # wraps it losslessly in a correctly sized PDF page
+
+# --- page handling for the fallback engines (--page a4) -------------------
+pypdf>=4.0.0            # centres a finished page on A4 without distortion
+
+# --- optional vector fallbacks -------------------------------------------
+# Only needed if Chromium's print-to-PDF is unavailable on your machine.
+# svglib + reportlab are pure Python and install anywhere:
+svglib>=1.5.0
+reportlab>=4.0.0
+#
+# CairoSVG is tried first among the fallbacks but needs the native Cairo
+# library, which is not bundled on Windows.  Install it only if you have
+# Cairo available (Linux/macOS, or GTK runtime on Windows):
+# cairosvg>=2.7.0

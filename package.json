@@ -1,0 +1,18 @@
+{
+  "name": "markmap-pdf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Node-side Markmap renderer used by markmap_to_pdf.py",
+  "main": "markmap_renderer.js",
+  "scripts": {
+    "render": "node markmap_renderer.js"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "markmap-common": "^0.18.9",
+    "markmap-lib": "^0.18.11",
+    "markmap-view": "^0.18.10",
+    "puppeteer": "^24.10.0"
+  }
+}
